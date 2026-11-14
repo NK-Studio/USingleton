@@ -23,6 +23,17 @@ namespace USingleton.Utility
         }
 
         /// <summary>
+        /// 플레이 모드에 들어갈 때마다 등록된 메시지를 비웁니다.
+        /// 도메인 리로드를 끈 경우(Enter Play Mode Options) 정적 필드가 이전 플레이의 등록을 그대로 들고 있어,
+        /// 같은 이름을 다시 등록하면 경고가 뜨고 이미 파괴된 오브젝트의 메서드가 호출되는 것을 막습니다.
+        /// </summary>
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        private static void ResetOnPlay()
+        {
+            RegisteredMessages.Clear();
+        }
+
+        /// <summary>
         /// 주어진 메시지 이름으로 메시지를 등록합니다.
         /// </summary>
         /// <param name="messageName">메시지의 이름입니다.</param>
