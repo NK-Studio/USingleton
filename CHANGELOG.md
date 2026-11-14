@@ -1,4 +1,9 @@
 # Changelog
+## [Unreleased]
+### Fixed
+- Fixed Messager not being compiled when installed as a package (it was outside any assembly definition)
+- Fixed Messager keeping messages from the previous play session when domain reload is disabled
+
 ## [1.2.8] - 2024-04-01
 ### Fixed
 - Fixed an issue where multiple Self Singleton instances were created
